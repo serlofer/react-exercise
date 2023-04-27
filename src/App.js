@@ -21,7 +21,10 @@ function App() {
     } else {
       setDisabled(true);
     }
+    //Reset field and button
     setEnteredCity("");
+    setDisabled(true);
+
     fetch(petition)
       .then(function (resp) {
         return resp.json();
