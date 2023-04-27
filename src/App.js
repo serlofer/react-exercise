@@ -1,6 +1,6 @@
 import MainHeader from "./components/MainHeader/MainHeader";
 import Footer from "./components/Footer/Footer";
-import { Button, TextField, Stack, Grid } from "@mui/material";
+import { Button, TextField, Stack } from "@mui/material";
 import { useState } from "react";
 import ForecastList from "./components/Forecast/ForecastList";
 
