@@ -1,13 +1,20 @@
 import MainHeader from "./components/MainHeader/MainHeader";
 import Footer from "./components/Footer/Footer";
-import { Box, Typography } from "@mui/material";
+import { Button, TextField, Stack } from "@mui/material";
 import { useState } from "react";
 
 function App() {
   const [enteredCity, setEnteredCity] = useState("");
+  const [disabled, setDisabled] = useState(true);
   const key = "c07c21117a73eb80fa09cc6e1c31d33c";
-  
+
   const getWeatherHandler = () => {
+    if (enteredCity.trim().length > 0) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         enteredCity +
@@ -25,32 +32,38 @@ function App() {
       });
   };
 
-  const addForecastHandler = () => {};
+  // const addForecastHandler = (event) => {
+  //   event.preventDefault();
+  // };
 
   const cityChangeHandler = (event) => {
     setEnteredCity(event.target.value);
+    if (event.target.value.toString().trim().length > 0){
+      setDisabled(false);
+    } else setDisabled(true);
   };
 
   return (
     <div>
       <MainHeader />
-      <Box sx={{ my: 4 }}>
-        <form onSubmit={addForecastHandler}>
-          <label htmlFor="cityName">City Name:</label>
-          <input
-            type="text"
-            id="cityName"
-            placeholder="Type your city name here"
-            value = {enteredCity}
-            onChange={cityChangeHandler}
-          />
-        </form>
+      <Stack spacing={3}>
+        <TextField
+          variant="standard"
+          type="text"
+          id="cityName"
+          placeholder="Type your city name here"
+          value={enteredCity}
+          onChange={cityChangeHandler}
+        />
 
-        <button onClick={getWeatherHandler}>Get current weather</button>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Material UI Create React App example
-        </Typography>
-      </Box>
+        <Button
+          variant="contained"
+          disabled={disabled}
+          onClick={getWeatherHandler}
+        >
+          Get current weather
+        </Button>
+      </Stack>
 
       <Footer />
     </div>

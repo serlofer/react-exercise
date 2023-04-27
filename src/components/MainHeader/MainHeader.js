@@ -1,6 +1,5 @@
 import background from '../../background.png';
 import classes from './MainHeader.module.css';
-import { TextField } from '@mui/material';
 
 const MainHeader = props => {
     return (
@@ -9,7 +8,6 @@ const MainHeader = props => {
         <h1>
           Forecast provider
         </h1>
-        <TextField id="standard-basic" label="Standard" variant="standard" />
       </header>
     );
 };
