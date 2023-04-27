@@ -8,19 +8,21 @@ function App() {
   const [disabled, setDisabled] = useState(true);
   const key = "c07c21117a73eb80fa09cc6e1c31d33c";
 
+  let petition =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    enteredCity +
+    "&units=metric" +
+    "&appid=" +
+    key;
+
   const getWeatherHandler = () => {
     if (enteredCity.trim().length > 0) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
-
-    fetch(
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-        enteredCity +
-        "&appid=" +
-        key
-    )
+    setEnteredCity("");
+    fetch(petition)
       .then(function (resp) {
         return resp.json();
       }) // Convert data to json
@@ -38,7 +40,7 @@ function App() {
 
   const cityChangeHandler = (event) => {
     setEnteredCity(event.target.value);
-    if (event.target.value.toString().trim().length > 0){
+    if (event.target.value.toString().trim().length > 0) {
       setDisabled(false);
     } else setDisabled(true);
   };
@@ -51,7 +53,7 @@ function App() {
           variant="standard"
           type="text"
           id="cityName"
-          placeholder="Type your city name here"
+          placeholder="Type your city name or zip code here"
           value={enteredCity}
           onChange={cityChangeHandler}
         />
