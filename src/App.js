@@ -1,6 +1,6 @@
 import MainHeader from "./components/MainHeader/MainHeader";
 import Footer from "./components/Footer/Footer";
-import { Button, TextField, Stack } from "@mui/material";
+import { Container, TextField, Button, Grid } from "@mui/material";
 import { useState } from "react";
 import ForecastList from "./components/Forecast/ForecastList";
 
@@ -11,6 +11,7 @@ const INITIAL_FORECASTS = [
     temperature: 23.6,
     realFeel: 24.2,
     description: "Scattered clouds",
+    icon: "10n",
   },
   {
     id: "e2",
@@ -18,6 +19,7 @@ const INITIAL_FORECASTS = [
     temperature: 12.7,
     realFeel: 10.6,
     description: "Rain",
+    icon: "10n",
   },
 ];
 
@@ -44,6 +46,7 @@ function App() {
         return resp.json();
       }) // Convert data to json
       .then(function (data) {
+        console.log(data);
         setForecasts((prevForecasts) => {
           return [
             {
@@ -51,7 +54,8 @@ function App() {
               city: data.name,
               temperature: parseFloat(data.main.temp),
               realFeel: parseFloat(data.main.feels_like),
-              description: data.weather[0].main,
+              description: data.weather[0].description,
+              icon: data.weather[0].icon,
             },
             ...prevForecasts,
           ];
@@ -70,31 +74,36 @@ function App() {
   };
 
   return (
-    <div>
+    <Container maxWidth="md">
       <MainHeader />
-      <Stack spacing={3}>
-        <TextField
-          variant="standard"
-          type="text"
-          id="cityName"
-          placeholder="Type your city name or zip code here"
-          value={enteredCity}
-          onChange={cityChangeHandler}
-        />
-
-        <Button
-          variant="contained"
-          disabled={disabled}
-          onClick={addForecastHandler}
-        >
-          Get current weather
-        </Button>
+      <Grid container spacing={1} m={2}>
+        <Grid item xs={3}></Grid>
+        <Grid item xs={4}>
+          <TextField
+            variant="standard"
+            type="text"
+            id="cityName"
+            placeholder="City name / zip code"
+            value={enteredCity}
+            onChange={cityChangeHandler}
+          />
+        </Grid>
+        <Grid item xs={3}>
+          <Button
+            variant="contained"
+            disabled={disabled}
+            onClick={addForecastHandler}
+          >
+            Get current weather
+          </Button>
+        </Grid>
+        <Grid item xs={2}></Grid>
+      </Grid>
+      <Container>
         <ForecastList items={forecasts} />
-      </Stack>
-
-
+      </Container>
       <Footer />
-    </div>
+    </Container>
   );
 }
 

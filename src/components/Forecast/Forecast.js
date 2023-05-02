@@ -1,23 +1,30 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Paper, CardMedia, Typography, Grid } from "@mui/material";
+import classes from "./Forecast.module.css";
 
-const Forecast = props => {
+const Forecast = (props) => {
+  const iconLink = "http://openweathermap.org/img/w/" + props.icon + ".png";
   return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {props.city}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {props.temperature}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Real feel: {props.realFeel}
-        </Typography>
-        <Typography variant="body2">
-            Description: {props.description}
-        </Typography>
-      </CardContent>
-    </Card>
+    <Paper elevation={12}>
+      <Grid container>
+        <Grid item xs="8">
+          <Typography component="div">{props.city}</Typography>
+          <Typography component="div" variant="h5">
+            {props.temperature}
+          </Typography>
+          <Typography component="div">Real feel: {props.realFeel}</Typography>
+          <Typography component="div">{props.description}</Typography>
+        </Grid>
+        <Grid item xs="4">
+          <CardMedia
+            className={classes.main}
+            component="img"
+            sx={{ width: "0 auto" }}
+            image={iconLink}
+            alt="Forecast icon"
+          />
+        </Grid>
+      </Grid>
+    </Paper>
   );
 };
 
