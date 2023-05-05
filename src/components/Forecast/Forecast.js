@@ -1,4 +1,11 @@
-import { Paper, CardMedia, Typography, Grid, Button } from "@mui/material";
+import {
+  Paper,
+  CardMedia,
+  Typography,
+  Grid,
+  Button,
+  Container,
+} from "@mui/material";
 import classes from "./Forecast.module.css";
 import { useState } from "react";
 import ForecastFiveDaysModal from "../UI/ForecastFiveDaysModal";
@@ -22,8 +29,8 @@ const Forecast = (props) => {
       .then(function (resp) {
         return resp.json();
       }) // Convert data to json
-      .then(function (data) {        
-        const res = data.list.slice(0,5);
+      .then(function (data) {
+        const res = data.list.slice(0, 5);
         setForecast(res);
       })
       .catch(function () {
@@ -38,7 +45,7 @@ const Forecast = (props) => {
   };
 
   return (
-    <div>
+    <Container>
       {fiveDaysModal && (
         <ForecastFiveDaysModal
           city={props.city}
@@ -49,29 +56,35 @@ const Forecast = (props) => {
       <Button onClick={showFiveDaysModalHandler}>
         <Paper elevation={12}>
           <Grid container>
-            <Grid item xs="8">
-              <Typography component="div">{props.city}</Typography>
-              <Typography component="div" variant="h5">
-                {props.temperature}
-              </Typography>
-              <Typography component="div">
-                Real feel: {props.realFeel}
-              </Typography>
-              <Typography component="div">{props.description}</Typography>
+            <Grid container>
+              <Grid item xs={8}>
+                <Typography component="div" variant="h6">
+                  {props.city}
+                </Typography>
+                <Typography component="div" variant="h6">
+                  {props.temperature}
+                </Typography>
+              </Grid>
+              <Grid item xs={4}>
+                <CardMedia
+                  className={classes.main}
+                  component="img"
+                  sx={{ width: "0 auto" }}
+                  image={iconLink}
+                  alt="Forecast icon"
+                />
+              </Grid>
             </Grid>
-            <Grid item xs="4">
-              <CardMedia
-                className={classes.main}
-                component="img"
-                sx={{ width: "0 auto" }}
-                image={iconLink}
-                alt="Forecast icon"
-              />
-            </Grid>
+            <Typography component="div" variant="p" m={2}>
+              Real feel: {props.realFeel}
+            </Typography>
+            <Typography component="div" variant="p" ml={2}>
+              {props.description}
+            </Typography>
           </Grid>
         </Paper>
       </Button>
-    </div>
+    </Container>
   );
 };
 

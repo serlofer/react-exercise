@@ -9,7 +9,7 @@
   }
   
   .modal {
-    position: fixed;
+    position:fixed;
     top: 30vh;
     left: 10%;
     width: 80%;
@@ -27,8 +27,11 @@
     color: white;
   }
   
-  .content {
-    padding: 1rem;
+  
+  .viewport{
+    align-items:baseline;
+    align-content: space-between;
+    flex-grow: 1;
   }
   
   .actions {
@@ -37,6 +40,22 @@
     justify-content: flex-end;
   }
   
+  .item {
+    display: table-cell;
+  }
+  
+  .content {
+    margin-top: 0.5%;
+    display: table;
+    width: 100%;
+  }
+
+  .button {
+    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-left: 80%;
+  }
+
   @media (min-width: 768px) {
     .modal {
       left: calc(50% - 20rem);

@@ -1,3 +1,19 @@
 .main {
-    
+    display: inline-flex;
+    align-content: center;
 }
+
+.items {
+  min-width: 300;
+}
+
+@media (max-width: 450px) {
+    .main {
+      display: inline-flex;
+      align-content: center;
+      flex-direction:column;
+    }
+    .items {
+      min-width: 250;
+    }
+  }

@@ -1,5 +1,5 @@
-import { Button, Grid, Card, Typography, CardMedia } from "@mui/material";
-import classes from "./ForecastFiveDays.module.css";
+import { Button, Grid, Card, Typography, CardMedia, Container } from "@mui/material";
+import classes from "./ForecastFiveDaysModal.module.css";
 
 const ForecastFiveDaysModal = (props) => {
   return (
@@ -9,16 +9,19 @@ const ForecastFiveDaysModal = (props) => {
         <header className={classes.header}>
           <h2>Forecast for five days in {props.city}</h2>
         </header>
-        <div className={classes.content}>
-          <Grid container spacing={5} >
+        <Container className={classes.content}>
+          <Grid key={props.city} container spacing={2} className={classes.content}>
             {props.forecasts.map((forecast) => (
-              <Grid item xs="2.2">
+              <Grid key={forecast.dt} item xs={2.2} className={classes.item}>
+                <Typography component="div">  
+                  {forecast.main.temp}ºC
+                </Typography>
                 <Typography component="div">
-                  Real feel: {forecast.main.feels_like}
+                  Real feel:{forecast.main.feels_like}ºC
                 </Typography>
                 <Typography component="div">{forecast.weather[0].description}</Typography>
                 <CardMedia
-                  className={classes.main}
+                  className={classes.item}
                   component="img"
                   sx={{ width: "0 auto" }}
                   image={
@@ -29,9 +32,9 @@ const ForecastFiveDaysModal = (props) => {
               </Grid>
             ))}
           </Grid>
-        </div>
+        </Container>
         <footer>
-          <Button variant="contained" onClick={props.onBackClick}>
+          <Button variant="contained" onClick={props.onBackClick} className={classes.button}>
             Go back
           </Button>
         </footer>

@@ -12,9 +12,9 @@ const ForecastList = (props) => {
   }
 
   return (
-    <Grid container spacing={5} className={classes.main} mb={3}>
+    <Grid container className={classes.main} mb={3} mt={3}>
       {props.items.map((forecast) => (
-        <Grid key={forecast.id} item xs={4}>
+        <Grid item xs={4} key={forecast.id} minWidth={230}>
           <Forecast
             city={forecast.city}
             temperature={forecast.temperature + " ºC"}
