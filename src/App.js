@@ -4,14 +4,17 @@ import { Container, TextField, Button, Grid } from "@mui/material";
 import { useState } from "react";
 import ForecastList from "./components/Forecast/ForecastList";
 import classes from "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { buttonActions } from "./store/searchButton";
 
 const INITIAL_FORECASTS = [];
 
 function App() {
   const [weather, setWeather] = useState(INITIAL_FORECASTS);
   const [enteredCity, setEnteredCity] = useState("");
-  const [disabled, setDisabled] = useState(true);
   const key = "c07c21117a73eb80fa09cc6e1c31d33c";
+  const buttonState = useSelector(state => state.searchButton.isDisabled);
+  const dispatch = useDispatch();
 
   let weatherPetition =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -47,14 +50,14 @@ function App() {
 
     //Reset field and button
     setEnteredCity("");
-    setDisabled(true);
+    // cityChangeHandler();
   };
 
   const cityChangeHandler = (event) => {
     setEnteredCity(event.target.value);
-    if (event.target.value.toString().trim().length > 0) {
-      setDisabled(false);
-    } else setDisabled(true);
+    dispatch(
+      buttonActions.checkToActivate(event.target.value.toString().trim().length)
+    );
   };
 
   return (
@@ -75,13 +78,13 @@ function App() {
         <Grid item xs={4}>
           <Button
             variant="contained"
-            disabled={disabled}
+            disabled={buttonState}
             onClick={addForecastHandler}
           >
             Get current weather
           </Button>
         </Grid>
-        <Grid item xs={2}/>
+        <Grid item xs={2} />
       </Grid>
       <Container>
         <ForecastList items={weather} apiKey={key} />
