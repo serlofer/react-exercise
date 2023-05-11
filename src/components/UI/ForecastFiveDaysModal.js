@@ -1,4 +1,11 @@
-import { Button, Grid, Card, Typography, CardMedia, Container } from "@mui/material";
+import {
+  Button,
+  Grid,
+  Card,
+  Typography,
+  CardMedia,
+  Container,
+} from "@mui/material";
 import classes from "./ForecastFiveDaysModal.module.css";
 
 const ForecastFiveDaysModal = (props) => {
@@ -10,22 +17,29 @@ const ForecastFiveDaysModal = (props) => {
           <h2>Forecast for five days in {props.city}</h2>
         </header>
         <Container className={classes.content}>
-          <Grid key={props.city} container spacing={2} className={classes.content}>
+          <Grid
+            key={props.city}
+            container
+            spacing={2}
+            className={classes.content}
+          >
             {props.forecasts.map((forecast) => (
-              <Grid key={forecast.dt} item xs={2.2} className={classes.item}>
-                <Typography component="div">  
-                  {forecast.main.temp}ºC
-                </Typography>
+              <Grid key={forecast.dt} item xs={2.25} className={classes.item}>
+                <Typography component="div">{forecast.main.temp}ºC</Typography>
                 <Typography component="div">
                   Real feel:{forecast.main.feels_like}ºC
                 </Typography>
-                <Typography component="div">{forecast.weather[0].description}</Typography>
+                <p className={classes.overflow}>
+                  {forecast.weather[0].description}
+                </p>
                 <CardMedia
                   className={classes.item}
                   component="img"
                   sx={{ width: "0 auto" }}
                   image={
-                    "http://openweathermap.org/img/w/" + forecast.weather[0].icon + ".png"
+                    "http://openweathermap.org/img/w/" +
+                    forecast.weather[0].icon +
+                    ".png"
                   }
                   alt="Forecast icon"
                 />
@@ -34,7 +48,12 @@ const ForecastFiveDaysModal = (props) => {
           </Grid>
         </Container>
         <footer>
-          <Button variant="contained" onClick={props.onBackClick} className={classes.button}>
+          <Button
+            variant="contained"
+            onClick={props.onBackClick}
+            className={classes.button}
+            m={5}
+          >
             Go back
           </Button>
         </footer>

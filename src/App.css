@@ -7,6 +7,22 @@
   flex-direction: column;
 }
 
+.MuiContainer-root {
+  background-color: lightgray;
+}
+
+.MuiGrid-container {
+  background-color: lightgray;
+}
+
+.MuiInputBase-formControl {
+  background-color: white;
+}
+
+div > div:nth-child(3) > div > button > div {
+  background-color: white;
+}
+
 .content {
   background-color: darkslategray;
   color: aliceblue;

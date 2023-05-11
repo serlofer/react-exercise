@@ -5,7 +5,7 @@ import classes from "./ForecastList.module.css";
 const ForecastList = (props) => {
   if (props.items.length === 0) {
     return (
-      <Grid container m={5} ml={33}>
+      <Grid container m={5} justifyContent={"center"}>
         <h2>Found no recent forecasts</h2>
       </Grid>
     );

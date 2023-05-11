@@ -1,64 +1,98 @@
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
+  width: 80%;
+  z-index: 100;
+  overflow: hidden;
+  margin-left: 15%;
+  max-width: 50%;
+  min-width: 550px;
+}
+
+.header {
+  background: #4f005f;
+  padding: 1rem;
+}
+
+.header h2 {
+  margin: 0;
+  color: white;
+}
+
+.viewport {
+  align-items: baseline;
+  align-content: space-between;
+  flex-grow: 1;
+}
+
+.actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.item {
+  display: table-cell;
+  max-width: 65%;
+  max-height: 65%;
+}
+
+.content {
+  margin-top: 0.5%;
+  display: table;
+  width: 100%;
+}
+
+.button {
+  margin-bottom: 5%;
+  margin-top: 2%;
+  margin-left: 80%;
+}
+
+footer {
+  background-color: lightgray;
+}
+
+.overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
   }
-  
+
   .modal {
     position:fixed;
-    top: 30vh;
-    left: 10%;
+    top: 10vh;
+    left: 2%;
     width: 80%;
-    z-index: 100;
+    /* z-index: 100; */
     overflow: hidden;
+    margin-left: 5%;
+    align-content: center;
   }
-  
-  .header {
-    background: #4f005f;
-    padding: 1rem;
+
+  .ForecastFiveDaysModal_content__8FgHz {
+    display: inline-flex;
+    align-content: center;
+    flex-direction: column;
   }
-  
-  .header h2 {
-    margin: 0;
-    color: white;
-  }
-  
-  
-  .viewport{
-    align-items:baseline;
-    align-content: space-between;
-    flex-grow: 1;
-  }
-  
-  .actions {
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
+
   .item {
     display: table-cell;
   }
-  
-  .content {
-    margin-top: 0.5%;
-    display: table;
-    width: 100%;
-  }
-
-  .button {
-    margin-bottom: 5%;
-    margin-top: 2%;
-    margin-left: 80%;
-  }
-
-  @media (min-width: 768px) {
-    .modal {
-      left: calc(50% - 20rem);
-      width: 40rem;
-    }
-  }
+}
