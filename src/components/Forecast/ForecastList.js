@@ -1,12 +1,15 @@
 import Forecast from "./Forecast";
 import { Grid } from "@mui/material";
 import classes from "./ForecastList.module.css";
+import { useTranslation } from "react-i18next";
 
 const ForecastList = (props) => {
+  const {t} = useTranslation();
+
   if (props.items.length === 0) {
     return (
       <Grid container m={5} justifyContent={"center"}>
-        <h2>Found no recent forecasts</h2>
+        <h2>{t('result.empty')}</h2>
       </Grid>
     );
   }

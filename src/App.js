@@ -6,11 +6,11 @@ import ForecastList from "./components/Forecast/ForecastList";
 import classes from "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { buttonActions } from "./store/searchButton";
-
-const INITIAL_FORECASTS = [];
+import { useTranslation } from "react-i18next";
 
 function App() {
-  const [weather, setWeather] = useState(INITIAL_FORECASTS);
+  const {t} = useTranslation();
+  const [weather, setWeather] = useState([]);
   const [enteredCity, setEnteredCity] = useState("");
   const key = "c07c21117a73eb80fa09cc6e1c31d33c";
   const buttonState = useSelector(state => state.searchButton.isDisabled);
@@ -64,27 +64,27 @@ function App() {
     <Container maxWidth="md">
       <MainHeader />
       <Grid container className={classes.input} mt={3}>
-        <Grid item xs={2} />
-        <Grid item xs={4}>
+        <Grid item xs={4} />
+        <Grid item xs={3}>
           <TextField
             variant="standard"
             type="text"
             id="cityName"
-            placeholder="City name / zip code"
+            placeholder={t('input.placeholder')}
             value={enteredCity}
             onChange={cityChangeHandler}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={2}>
           <Button
             variant="contained"
             disabled={buttonState}
             onClick={addForecastHandler}
           >
-            Get current weather
+            {t('input.buttonText')}
           </Button>
         </Grid>
-        <Grid item xs={2} />
+        <Grid item xs={3} />
       </Grid>
       <Container>
         <ForecastList items={weather} apiKey={key} />
