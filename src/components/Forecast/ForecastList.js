@@ -23,7 +23,8 @@ const ForecastList = (props) => {
             temperature={forecast.temperature + " ºC"}
             realFeel={forecast.realFeel + " ºC"}
             description={forecast.description}
-            icon={forecast.icon}  
+            icon={forecast.icon}
+            lang={props.lang}
           />
         </Grid>
       ))}

@@ -20,7 +20,8 @@ const Forecast = (props) => {
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     props.city +
     "&units=metric" +
-    "&lang=ES" +
+    "&lang=" +
+    props.lang +
     "&appid=" +
     key;
 

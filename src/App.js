@@ -20,7 +20,7 @@ function App() {
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     enteredCity +
     "&units=metric" +
-    "&lang=ES" +
+    "&lang=" + t('lang') + 
     "&appid=" +
     key;
 
@@ -87,7 +87,7 @@ function App() {
         <Grid item xs={3} />
       </Grid>
       <Container>
-        <ForecastList items={weather} apiKey={key} />
+        <ForecastList lang={t('lang')} items={weather} apiKey={key} />
       </Container>
       <Footer />
     </Container>

@@ -14,6 +14,7 @@ i18n
         resources: {
             en: {
                 translation: {
+                    lang: 'EN',
                     header: {
                         lang: 'Language',
                         title: 'Forecast provider'
@@ -32,6 +33,7 @@ i18n
             },
             es: {
                 translation: {
+                    lang: 'ES',
                     header: {
                         lang: 'Idioma',
                         title: 'Previsión del tiempo'
@@ -50,6 +52,7 @@ i18n
             },
             de: {
                 translation: {
+                    lang: 'DE',
                     header: {
                         lang: 'Sprache',
                         title: 'Wettervorhersage'
