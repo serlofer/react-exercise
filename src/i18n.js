@@ -26,6 +26,9 @@ i18n
                     result: {
                         empty: 'Found no recent forecasts'
                     },
+                    forecast: {
+                        fiveDays:'Forecast for five days in '
+                    },
                     footer: {
                         text: 'Forecast provider I.N.C - PNC Center 201 E St Suite 1900 Regus, Cincinnati'
                     }
@@ -45,6 +48,9 @@ i18n
                     result: {
                         empty: 'No se han encontrado pronósticos recientes'
                     },
+                    forecast: {
+                        fiveDays:'Pronóstico para 5 días en '
+                    },
                     footer: {
                         text: 'Forecast provider I.N.C - División española Av. de Brasil, 29, 28020, Madrid'
                     }
@@ -63,6 +69,9 @@ i18n
                     },
                     result: {
                         empty: 'Kürzlich wurden keine Prognosen gefunden'
+                    },
+                    forecast: {
+                        fiveDays:'Fünf-Tage-Prognose für '
                     },
                     footer: {
                         text: 'Forecast provider I.N.C - Deutsche Sektion, Coworking Gottesweg 56 Ehrenfeld, Köln'

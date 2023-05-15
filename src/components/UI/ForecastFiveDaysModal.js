@@ -7,14 +7,16 @@ import {
   Container,
 } from "@mui/material";
 import classes from "./ForecastFiveDaysModal.module.css";
+import { useTranslation } from "react-i18next";
 
 const ForecastFiveDaysModal = (props) => {
+  const { t } = useTranslation();
   return (
     <div>
       <div className={classes.backdrop} />
       <Card className={classes.modal}>
         <header className={classes.header}>
-          <h2>Forecast for five days in {props.city}</h2>
+          <h2>{t('forecast.fiveDays')}{props.city}</h2>
         </header>
         <Container className={classes.content}>
           <Grid
