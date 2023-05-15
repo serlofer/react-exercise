@@ -11,12 +11,20 @@ import { useTranslation } from "react-i18next";
 
 const ForecastFiveDaysModal = (props) => {
   const { t } = useTranslation();
+  let dates = [];
+  dates.push(new Date());
+  for (let i = 1; i < 5; i++) {
+    dates.push((new Date() + i).toString().slice(0,15));
+  }
   return (
     <div>
       <div className={classes.backdrop} />
       <Card className={classes.modal}>
         <header className={classes.header}>
-          <h2>{t('forecast.fiveDays')}{props.city}</h2>
+          <h2>
+            {t("forecast.fiveDays")}
+            {props.city}
+          </h2>
         </header>
         <Container className={classes.content}>
           <Grid
@@ -27,6 +35,7 @@ const ForecastFiveDaysModal = (props) => {
           >
             {props.forecasts.map((forecast) => (
               <Grid key={forecast.dt} item xs={2.25} className={classes.item}>
+                <Typography component="div">{forecast.dt_txt.toString().slice(8,10)}/{forecast.dt_txt.toString().slice(5,7)}</Typography>
                 <Typography component="div">{forecast.main.temp}ºC</Typography>
                 <Typography component="div">
                   Real feel:{forecast.main.feels_like}ºC

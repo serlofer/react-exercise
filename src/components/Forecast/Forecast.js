@@ -30,8 +30,9 @@ const Forecast = (props) => {
       .then(function (resp) {
         return resp.json();
       }) // Convert data to json
-      .then(function (data) {
-        const res = data.list.slice(0, 5);
+      .then(function (data) {        
+        const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1); //from https://www.w3resource.com/javascript-exercises/fundamental/javascript-fundamental-exercise-21.php
+        const res = every_nth(data.list, 8);
         setForecast(res);
       })
       .catch(function () {
@@ -54,7 +55,7 @@ const Forecast = (props) => {
           forecasts={forecast}
         />
       )}
-      <Button onClick={showFiveDaysModalHandler} toolt>
+      <Button onClick={showFiveDaysModalHandler}>
         <Paper elevation={12}>
           <Grid container>
             <Grid container>
